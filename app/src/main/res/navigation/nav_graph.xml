@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    app:startDestination="@id/categoriesFragment"
+    android:id="@+id/nav_graph">
+    <fragment
+        android:id="@+id/categoriesFragment"
+        android:name="com.example.medappcoursework.ui.categories_fragment.CategoriesFragment"
+        android:label="fragment_categories"
+        tools:layout="@layout/fragment_categories">
+        <action
+            android:id="@+id/action_categoriesFragment_to_patientListFragment"
+            app:destination="@id/patientListFragment" />
+        <action
+            android:id="@+id/action_categoriesFragment_to_diseaseCategoryDetailsDialog"
+            app:destination="@id/diseaseCategoryDetailsDialog" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/patientListFragment"
+        android:name="com.example.medappcoursework.ui.patients_fragment.PatientListFragment"
+        android:label="fragment_patient_list"
+        tools:layout="@layout/fragment_patient_list">
+        <action
+            android:id="@+id/action_patientListFragment_to_patientBioFragment"
+            app:destination="@id/patientBioFragment" />
+        <argument
+            android:name="diseaseId"
+            app:argType="string" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/patientBioFragment"
+        android:name="com.example.medappcoursework.ui.bio_fragment.BioFragment"
+        android:label="fragment_patient_bio"
+        tools:layout="@layout/fragment_patient_bio">
+        <argument
+            android:name="diseaseId"
+            app:argType="string" />
+        <argument
+            android:name="patientId"
+            app:argType="string" />
+        <action
+            android:id="@+id/action_patientBioFragment_to_patientTreatmentDialog"
+            app:destination="@id/treatmentDialog" />
+    </fragment>
+
+    <dialog
+        android:id="@+id/diseaseCategoryDetailsDialog"
+        android:name="com.example.medappcoursework.ui.categories_fragment.category_dialog.DiseaseCategoryDetailsDialog"
+        android:label="DiseaseDetailsDialog"/>
+
+    <dialog
+        android:id="@+id/treatmentDialog"
+        android:name="com.example.medappcoursework.ui.bio_fragment.treatment_dialog.TreatmentDialog"
+        android:label="TreatmentDialog">
+        <argument
+            android:name="treatmentId"
+            app:argType="string" />
+        <argument
+            android:name="patientId"
+            app:argType="string" />
+    </dialog>
+</navigation>

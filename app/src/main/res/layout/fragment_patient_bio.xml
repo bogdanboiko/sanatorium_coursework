@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/black">
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/topToolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        app:layout_constraintTop_toTopOf="parent"
+        android:background="@color/teal_200">
+        <ImageButton
+            android:id="@+id/editPatientInfoButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/ic_baseline_create_24"
+            android:padding="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_gravity="end"/>
+
+        <ImageButton
+            android:id="@+id/archiveButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/ic_baseline_archive_24"
+            android:padding="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_gravity="start"/>
+        <ImageButton
+            android:id="@+id/confirmPatientInfoButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            android:background="@drawable/ic_baseline_done_24"
+            android:padding="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_gravity="end"/>
+
+        <ImageButton
+            android:id="@+id/addTreatmentButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="visible"
+            android:background="@drawable/ic_baseline_add_24"
+            android:padding="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_gravity="start"/>
+        <ImageButton
+            android:id="@+id/cancelButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            android:background="@drawable/ic_baseline_close_24"
+            android:padding="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_gravity="end"/>
+    </androidx.appcompat.widget.Toolbar>
+
+    <EditText
+        android:id="@+id/nameEditText"
+        android:layout_width="match_parent"
+        android:enabled="false"
+        android:layout_height="wrap_content"
+        android:maxLines="1"
+        android:hint="(first name, last name)"
+        android:textColorHint="@color/white"
+        android:textColor="@color/white"
+        app:layout_constraintTop_toBottomOf="@+id/topToolbar"
+        app:layout_constraintBottom_toTopOf="@id/bioEditText"/>
+
+    <EditText
+        android:id="@+id/bioEditText"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:enabled="false"
+        android:hint="(patient bio)"
+        android:textColor="@color/white"
+        android:textColorHint="@color/white"
+        android:gravity="top"
+        app:layout_constraintTop_toBottomOf="@id/nameEditText"
+        app:layout_constraintBottom_toTopOf="@id/bioGuideline"/>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/bioGuideline"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.3" />
+
+    <TextView
+        android:id="@+id/arrivalDateEditText"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:textColor="@color/white"
+        android:textColorHint="@color/white"
+        android:textSize="20sp"
+        android:hint="Press edit button to set patient details"
+        android:gravity="center"
+        app:layout_constraintBottom_toTopOf="@id/centerGuideline"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/bioGuideline" />
+
+    <DatePicker
+        android:id="@+id/arrivalDatePicker"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:datePickerMode="spinner"
+        android:visibility="gone"
+        android:spinnersShown="true"
+        android:calendarViewShown="false"
+        android:textColor="@color/white"
+        android:textColorHint="@color/white"
+        app:layout_constraintBottom_toTopOf="@id/centerGuideline"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/bioGuideline" />
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/centerGuideline"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.5" />
+    <TextView
+        android:id="@+id/placeholderTextView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="invisible"
+        android:textSize="20sp"
+        android:text="Press + button to add patient treatment"
+        android:gravity="center"
+        />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/treatmentRecycler"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/centerGuideline" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
